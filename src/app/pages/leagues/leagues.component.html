@@ -1,0 +1,47 @@
+
+<div class="p-12">
+    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-64 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option selected>Choose your favorite league : </option>
+        <option value="ENG1" class="_link" data-league="39">English Premier League</option>
+        <option value="FRA1" class="_link" data-league="61">Ligue 1</option>
+        <option value="GER1" class="_link" data-league="78">Bundesliga</option>
+        <option value="NED1" class="_link" data-league="88">Eredivisie</option>
+        <option value="POR1" class="_link" data-league="94">Primeira Liga</option>
+        <option value="POR1" class="_link" data-league="135">Seria A</option>
+        <option value="POR1" class="_link" data-league="140">La Liga</option>
+        <option value="POR1" class="_link" data-league="146">Belgian Pro League</option>
+        <option value="UCL" class="_link" data-league="2">UEFA Champions League</option>
+        <option value="UEL" class="_link" data-league="3">UEFA Europa League</option>
+    </select>
+</div>
+
+<div id="wg-api-football-standings"
+    data-host="v3.football.api-sports.io"
+    data-key="4545d2ea053ef4b802b23ece1f027700"
+    data-league="3"
+    data-team=""
+    data-season="2023"
+    data-theme=""
+    data-show-errors="false"
+    data-show-logos="true"
+    class="wg_loader">
+</div>
+
+<script>
+    document.getElementById('countries').addEventListener('change', function () {
+        let id = this.options[this.selectedIndex].getAttribute('data-league');
+        let standings = document.getElementById('wg-api-football-standings');
+        standings.innerHTML = '';
+        standings.setAttribute('data-league', id);
+        window.document.dispatchEvent(new Event("DOMContentLoaded", {
+            bubbles: true,
+            cancelable: true
+        }));
+    });
+</script>
+
+<script
+    type="module"
+    src="https://widgets.api-sports.io/2.0.3/widgets.js">
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tailwind via CDN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inclure Tailwind CSS via CDN -->
+</head>
+
+<body>
+    <div class="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
+        <aside class="hidden py-4 md:w-1/3 lg:w-1/4 md:block">
+            <div class="sticky flex flex-col gap-2 p-4 text-sm border-r border-indigo-100 top-12">
+                <h2 class="pl-3 mb-4 text-2xl font-semibold">Settings</h2>
+                <a href="#set-gen" class="flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full" >
+                    General
+                </a>
+                <a href="#set-imgs" class="flex items-center px-3 py-2.5 font-semibold hover:text-indigo-900 hover:border hover:rounded-full">
+                    Upload images
+                </a>
+            </div>
+        </aside>
+        <main class="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
+            <div class="p-2 md:p-4">
+                <div class="tab-content">
+                    <div class="tab-pane fade" id="set-gen">
+                        <!-- Contenu de l'onglet General -->
+                        <div class="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
+                            <h2 class="pl-6 text-2xl font-bold sm:text-xl">Public Profile</h2>
+                            <!-- Vos éléments pour l'onglet General -->
+                            <p>ajajajja</p>
+                            <p>qsdqsdqdqswx,;,cs:d,f:;,ds</p>
+                            <!-- ... -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade hidden" id="set-imgs">
+                        <!-- Contenu de l'onglet Upload images -->
+                        <div class="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
+                            <h2 class="pl-6 text-2xl font-bold sm:text-xl">Upload Images</h2>
+                            <!-- Nouveaux éléments pour l'onglet Upload images -->
+                            <!-- Ajoutez ici les éléments spécifiques à cet onglet -->
+                            <p>qsdqsdqsdqs</p>
+                            <p>qsdqscnvw, ,wxnc,;nwx;,ndqjdsnkjfqskljdklqjlkdsj</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

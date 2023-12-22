@@ -1,0 +1,52 @@
+ <!--<div *ngFor="let logo of quizData">
+  <h2>{{ logo.id }}</h2>
+  <h2>{{ logo.nom }}</h2>
+  <h2>{{ logo.propositions }}</h2>
+  <img [src]="logo.image" alt="{{ logo.nom }} Image" style="height: 200px; width: 150px;">
+</div>-->
+  <div class="max-w-md mx-auto my-8" *ngIf="!quizStarted && timeRemaining !== '00:00'">
+    <p>
+      Bienvenue dans le quiz des logos de football, êtes-vous prêt ? <br>
+     Testez vos compétences, si vous êtes un vrai footeux, vous finirez avec la note complète !
+    </p>
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+      (click)="startQuiz()"
+    >
+      Commencer le quiz
+    </button>
+  </div>
+  
+    <div *ngIf="quizStarted && showQuiz" class="max-w-md mx-auto my-8">
+      <!-- Affichage du compteur de temps -->
+      <p>Temps restant : {{ timeRemaining }}</p>
+    
+      <h2 class="text-2xl font-bold">Quelle est cette équipe ?</h2><br>
+
+      <!-- Affichage de l'image de la question -->
+      <img [src]="quizData[currentQuestionIndex].image" alt="Logo Image" style="height: 200px; width: 150px;"><br>
+    
+      <!-- Affichage de l'input stylisé avec Tailwind -->
+      <input
+        type="text"
+        class="border rounded px-4 py-2 mt-4 focus:outline-none shadow-md"
+        placeholder="Saisissez votre réponse ici"
+        [(ngModel)]="userAnswer"
+      >
+    
+      <!-- Bouton pour soumettre la réponse -->
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+        (click)="submitAnswer()"
+      >
+        Soumettre
+      </button>
+    </div>
+
+<!-- ... (autres éléments) -->
+<div class="max-w-md mx-auto my-8" *ngIf="isQuizFinished">
+  <p>Votre score est : {{ score }} / {{ quizData.length }}</p>
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" (click)="restartQuiz()">
+    Refaire le quiz
+  </button>
+</div>
