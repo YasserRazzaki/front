@@ -18,6 +18,7 @@ window.Pusher = require('pusher-js');
   providedIn: 'root'
 })
 export class WsService {
+  channel: any;
 
   constructor(
     public authService: AuthService
@@ -56,4 +57,7 @@ export class WsService {
       console.log('TestEvent', data);
     });
   }  
+  sendMessage(message: string): void {
+    this.channel.trigger('client-MessageEvent', { message: message });
+  }
 }

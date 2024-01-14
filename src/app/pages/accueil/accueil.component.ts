@@ -21,8 +21,8 @@ export class AccueilComponent implements OnInit {
     private wsService: WsService
   ) { }
 
-  sendMessage() {
-   // this.wsService.emit('TestEvent', { message: 'Hello, world!' });
+  sendMessage(): void {
+    this.wsService.sendMessage('Ceci est un message via WebSocket !');
   }
 
   ngOnInit(): void {
