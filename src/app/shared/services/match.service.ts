@@ -19,7 +19,95 @@ export class MatchService {
         console.error('API Error:', error);
         throw new Error(error);
       });}
+
+      getEnglishLeague(): Promise<any> {
+        return this.requestApi('/standings?league=39&season=2023', 'GET')
+          .then(response => {
+            console.log('Données de leagues reçues:', response.response);
+            return response.response;
+          })
+          .catch(error => {
+            console.error('API Error:', error);
+            throw new Error(error);
+          });}
+
+          getFrenchLeague(): Promise<any> {
+            return this.requestApi('/standings?league=61&season=2023', 'GET')
+              .then(response => {
+                console.log('Données de leagues reçues:', response.response);
+                return response.response;
+              })
+              .catch(error => {
+                console.error('API Error:', error);
+                throw new Error(error);
+              });}
+
+              getGermanLeague(): Promise<any> {
+                return this.requestApi('/standings?league=78&season=2023', 'GET')
+                  .then(response => {
+                    console.log('Données de leagues reçues:', response.response);
+                    return response.response;
+                  })
+                  .catch(error => {
+                    console.error('API Error:', error);
+                    throw new Error(error);
+                  });}
+
+                  getItalianLeague(): Promise<any> {
+                    return this.requestApi('/standings?league=135&season=2023', 'GET')
+                      .then(response => {
+                        console.log('Données de leagues reçues:', response.response);
+                        return response.response;
+                      })
+                      .catch(error => {
+                        console.error('API Error:', error);
+                        throw new Error(error);
+                      });}
+
+                      getSpanishLeague(): Promise<any> {
+                        return this.requestApi('/standings?league=140&season=2023', 'GET')
+                          .then(response => {
+                            console.log('Données de leagues reçues:', response.response);
+                            return response.response;
+                          })
+                          .catch(error => {
+                            console.error('API Error:', error);
+                            throw new Error(error);
+                          });}
+                          getUCL(): Promise<any> {
+                            return this.requestApi('/standings?league=2&season=2023', 'GET')
+                              .then(response => {
+                                console.log('Données de leagues reçues:', response.response);
+                                return response.response;
+                              })
+                              .catch(error => {
+                                console.error('API Error:', error);
+                                throw new Error(error);
+                              });}
+
+                              getUEL(): Promise<any> {
+                                return this.requestApi('/standings?league=3&season=2023', 'GET')
+                                  .then(response => {
+                                    console.log('Données de leagues reçues:', response.response);
+                                    return response.response;
+                                  })
+                                  .catch(error => {
+                                    console.error('API Error:', error);
+                                    throw new Error(error);
+                                  });}
   
+          getRankingById(leagueId: number, season: number): Promise<any> {
+            const endpoint = `/standings?league=${leagueId}&season=${season}`;
+            return this.requestApi(endpoint, 'GET')
+              .then(response => {
+                console.log(`Données de standings pour la ligue et la saison actuelle reçues:`, response);
+                return response; // Assurez-vous que la structure des données correspond à ce que vous attendez
+              })
+              .catch(error => {
+                console.error('API Error:', error);
+                throw new Error(error);
+              });
+          }
 
   public async requestApi(action: string, method: string = 'GET', datas: any = {}, httpOptions: any = {}): Promise<any> {
     const methodWanted = method.toLowerCase();

@@ -20,8 +20,8 @@ export class AuthService {
   }
 
   // Méthode pour initier le processus d'authentification
-  initiateGoogleAuth() {
-    return environment.apiUrl+'/login/google';
+  initiateOAuth(provider: string) {
+    return `${environment.apiUrl}/login/${provider}`;
   }
 
   // Méthode pour gérer la réponse d'authentification OAuth
@@ -29,34 +29,56 @@ export class AuthService {
     const code = this.extractCodeFromURL();
     
     if (code) {
-      this.exchangeCodeForToken(code);
+        const provider = this.detectProviderFromURL(); // Implement this function to detect the provider based on the URL
+        if (provider === 'google') {
+            this.exchangeCodeForToken(code, 'google');
+        } else if (provider === 'github') {
+            this.exchangeCodeForToken(code, 'github');
+        } else {
+            console.error('Unknown provider:', provider);
+        }
     }
+}
+
+detectProviderFromURL(): string | null {
+  const url = window.location.href;
+
+  if (url.includes('google')) {
+      return 'google';
+  } else if (url.includes('github')) {
+      return 'github';
+  } else {
+      return null;
   }
+}
+
 
   // Méthode pour échanger le code d'authentification contre un token d'accès
-  private exchangeCodeForToken(code: string) {
+  private exchangeCodeForToken(code: string, provider: string) {
     const body = { code: code };
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    this.http.get(environment.apiUrl+'/api/login/google/callback?code='+code, { headers }).subscribe(
-      (response: any) => {
-        console.log(response);
-        if (response.token) {
-          this.accessToken = response.token.plainTextToken;
-          console.log(this.accessToken);
-          localStorage.setItem('accessToken', this.accessToken || '');
-          this.router.navigate(['/accueil']);
-        } else {
-          // Gérer l'authentification échouée
-          this.router.navigate(['/login']);
+    this.http.get(`${environment.apiUrl}/api/login/${provider}/callback?code=${code}`, { headers }).subscribe(
+        (response: any) => {
+            console.log(response);
+            if (response.token) {
+                this.accessToken = response.token.plainTextToken;
+                console.log(this.accessToken);
+                localStorage.setItem('accessToken', this.accessToken || '');
+                this.router.navigate(['/accueil']);
+                window.location.reload();
+            } else {
+                // Handle authentication failure
+                this.router.navigate(['/login']);
+            }
+        },
+        (error) => {
+            console.error('Authentication error:', error);
+            // Handle errors
         }
-      },
-      (error) => {
-        console.error('Authentication error:', error);
-        // Gérer les erreurs
-      }
     );
-  }
+}
+
   getAccessToken(): string | null {
     // Vérifier d'abord si le token est déjà en mémoire
     if (this.accessToken !== null) {
@@ -78,11 +100,6 @@ export class AuthService {
   }
 
   public async requestApi(action: string, method: string = 'GET', datas: any = {}, httpOptions: any = {}): Promise<any> {
-    // if (!this.onlineStatusService.getIsOnline()) {
-    //   console.log('no request because offline');
-    //   return;
-    // }
-
     const methodWanted = method.toLowerCase();
     let route = environment.apiUrl + action;
 
@@ -118,7 +135,7 @@ export class AuthService {
         req = this.http.delete(route, httpOptions);
         break;
       default:
-        route += '?' + Object.keys(datas).map((key) => {
+        route + Object.keys(datas).map((key) => {
           return key + '=' + datas[key];
         }).join('&');
 
@@ -160,12 +177,10 @@ export class AuthService {
    logout() {
     this.accessToken = null;
     localStorage.removeItem('accessToken');
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
+    this.reloadPage(); // Rafraîchir la page après la déconnexion
   }
-
-    loginCredentials(emailCre: string, passwordCre: string) {
-      const data = { emailCre, passwordCre };
-
-      return this.http.post('http://localhost:8000/loginCredentials', data);
+  reloadPage(){
+    window.location.reload();
   }
 }

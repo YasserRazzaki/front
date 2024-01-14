@@ -11,6 +11,8 @@ export class QuizService {
     return this.AuthService.requestApi('/api/quiz/logo');
   }
 
-  
+  getQuizJoueurData() {
+    return this.AuthService.requestApi('/api/quiz/joueur');
+  }
 
 }

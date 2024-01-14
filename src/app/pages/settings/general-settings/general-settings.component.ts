@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../shared/services/auth.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-general-settings',
   templateUrl: './general-settings.component.html',
@@ -18,7 +19,6 @@ export class GeneralSettingsComponent {
     userFirstName?: string;
     userLastName?: string;
     activeTab = 'general';
-
     userForm: FormGroup;
 
   constructor(
@@ -35,7 +35,46 @@ export class GeneralSettingsComponent {
   showTab(tab: string) {
     this.activeTab = tab;
   }
+ngOnInit(): void {
+  // Récupérer les informations de l'utilisateur depuis le service
+  this.authService.getUserInfo().then((user) => {
+    this.userEmail = user.email;
+    this.userName = user.username;
+    this.userImage = user.user_image;
+    this.userBio = user.bio;
+    this.userTeam = user.team;
+    this.userFirstName = user.first_name;
+    this.userLastName = user.last_name;
+  })
+}
 
+
+
+submitForm() {
+    // Appel à l'API uniquement si des modifications ont été apportées
+    const data = this.userForm.value;
+    this.authService.requestApi('/api/user', 'PUT', data).then(rep => {
+      console.log(rep);
+      // Affichez la notification en cas de succès
+      this.showSuccessNotification();
+    });
+  }
+
+showSuccessNotification() {
+  Swal.fire({
+    icon: 'success',
+    title: 'Profile Updated Successfully!',
+    showConfirmButton: false,
+    timer: 1500
+  });
+}
+
+logout() {
+  this.authService.logout();
+}
+}
+
+/*
 ngOnInit(): void {
 
 
@@ -61,4 +100,6 @@ submitForm(){
     console.log(rep);
   })
 }
+
 }
+*/

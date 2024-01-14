@@ -15,6 +15,16 @@ import { PhotoSettingsComponent } from './pages/settings/photo-settings/photo-se
 import { FootballMatchesComponent } from './pages/football-matches/football-matches.component';
 import { LeaguesComponent } from './pages/leagues/leagues.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { QuizjoueurComponent } from './pages/quizjoueur/quizjoueur.component';
+import { LoginClassicComponent } from './pages/login-classic/login-classic.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { EnglishComponent } from './pages/leagues/english/english.component';
+import { SpanishComponent } from './pages/leagues/spanish/spanish.component';
+import { ItalianComponent } from './pages/leagues/italian/italian.component';
+import { FrenchComponent } from './pages/leagues/french/french.component';
+import { GermanComponent } from './pages/leagues/german/german.component';
+import { ChampionsLeagueComponent } from './pages/leagues/champions-league/champions-league.component';
+import { EuropaLeagueComponent } from './pages/leagues/europa-league/europa-league.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +38,17 @@ import { MenuComponent } from './pages/menu/menu.component';
     PhotoSettingsComponent,
     FootballMatchesComponent,
     LeaguesComponent,
-    MenuComponent
+    MenuComponent,
+    QuizjoueurComponent,
+    LoginClassicComponent,
+    RegisterComponent,
+    EnglishComponent,
+    SpanishComponent,
+    FrenchComponent,
+    GermanComponent,
+    ItalianComponent,
+    ChampionsLeagueComponent,
+    EuropaLeagueComponent
   ],
   imports: [
     BrowserModule,
