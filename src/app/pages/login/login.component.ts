@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-//import { AuthgithubService } from 'src/app/shared/services/authgithub.service';
+import Swal from 'sweetalert2';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,15 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  constructor(public authService: AuthService, private route: ActivatedRoute, private router: Router) {
+  constructor(private fb: FormBuilder, public authService: AuthService, private route: ActivatedRoute, private router: Router) {
   }
   user?: any;
+  loginForm!: FormGroup;
   ngOnInit() {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
     if (this.authService.isTokenStored()) {
       console.log('Le token est stocké dans le local storage.');
     } else {
@@ -30,19 +36,22 @@ export class LoginComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
 }
+loginCre() {
+  if (this.loginForm.valid) {
+    const credentials = this.loginForm.value;
+    this.authService.loginCla(credentials).subscribe(
+      (response) => {
+        console.log('Connexion réussie !', response);
+        // Ajoutez des actions après une connexion réussie, par exemple :
+        Swal.fire('Success', 'Connexion réussie !', 'success');
+        this.router.navigate(['/accueil']); // Redirigez l'utilisateur vers la page d'accueil
+      },
+      (error) => {
+        console.error('Erreur lors de la connexion', error);
+        // Gérez les erreurs de connexion ici
+        Swal.fire('Erreur', 'Identifiants incorrects', 'error');
+      }
+    );
+  }
 }
-
-/*   if (this.authGithubService.isTokenStored()) {
-      console.log('Le token github est stocké dans le local storage.');
-    } else {
-      console.log('Aucun token githb dans le local storage.');
-    }
-    // Abonnez-vous aux modifications des paramètres d'URL
-    this.user = this.authGithubService.getUserInfo();
-     // Vérifier si l'utilisateur est déjà authentifié
-     if (this.authGithubService.isAuthenticated()) {
-      // L'utilisateur est déjà connecté, rediriger vers la page d'accueil
-      console.log('Utilisateur gthb déjà connecté.');
-      // Rediriger où vous devez
-    } else {console.log('Utilisateur gthb pas connecté.');}
-  } */
+}

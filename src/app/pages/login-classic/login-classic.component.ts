@@ -9,8 +9,8 @@ import Swal from 'sweetalert2';
   templateUrl: './login-classic.component.html',
   styleUrls: ['./login-classic.component.scss']
 })
-export class LoginClassicComponent implements OnInit {
-  loginForm!: FormGroup;
+export class LoginClassicComponent{
+ /* loginForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
     private regser: RegistrationService, private router: Router) {}
@@ -39,5 +39,5 @@ export class LoginClassicComponent implements OnInit {
         }
       );
     }
-  }
+  }*/
 }

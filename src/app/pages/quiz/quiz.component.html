@@ -17,7 +17,7 @@
     </button>
   </div>
   
-    <div *ngIf="quizStarted && showQuiz" class="max-w-md mx-auto my-8">
+    <div *ngIf="quizStarted && showQuiz" class="max-w-lg mx-auto my-8">
       <!-- Affichage du compteur de temps -->
       <p>Temps restant : {{ timeRemaining }}</p>
     
@@ -27,21 +27,12 @@
       <img [src]="quizData[currentQuestionIndex].image" alt="Logo Image" style="height: 200px; width: 150px;"><br>
     
       <!-- Affichage de l'input stylisé avec Tailwind -->
-      <input
-        type="text"
-        class="border rounded px-4 py-2 mt-4 focus:outline-none shadow-md"
-        placeholder="Saisissez votre réponse ici"
-        [(ngModel)]="userAnswer"
-      >
-    
-      <!-- Bouton pour soumettre la réponse -->
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-        (click)="submitAnswer()"
-      >
-        Soumettre
-      </button>
-    </div>
+      <div *ngIf="showQuiz">
+        <div class="options">
+          <button class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 mt-4 mr-4" *ngFor="let proposition of quizData[currentQuestionIndex].propositions" (click)="submitAnswer(proposition)">{{ proposition }}</button>
+        </div>
+      </div>
+</div>
 
 <!-- ... (autres éléments) -->
 <div class="max-w-md mx-auto my-8" *ngIf="isQuizFinished">

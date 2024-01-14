@@ -16,7 +16,4 @@ export class RegistrationService {
    // return this.authService.requestApi('/api/register', 'POST', user);
    return this.http.post(`${environment.apiUrl}/api/register`, user); 
   }
-  loginCla(credentials: { email: string; password: string }) {
-    return this.http.post(`${environment.apiUrl}/api/login-classic`, credentials); 
-  }
 }

@@ -32,10 +32,11 @@ export class AuthService {
         const provider = this.detectProviderFromURL(); // Implement this function to detect the provider based on the URL
         if (provider === 'google') {
             this.exchangeCodeForToken(code, 'google');
-        } else if (provider === 'github') {
-            this.exchangeCodeForToken(code, 'github');
+        } 
+        else if (provider === 'github') {
+         
         } else {
-            console.error('Unknown provider:', provider);
+            //console.error('Unknown provider:', provider);
         }
     }
 }
@@ -183,4 +184,8 @@ detectProviderFromURL(): string | null {
   reloadPage(){
     window.location.reload();
   }
+  loginCla(credentials: { email: string; password: string }) {
+    return this.http.post(`${environment.apiUrl}/api/login-classic`, credentials); 
+  }
+  
 }
