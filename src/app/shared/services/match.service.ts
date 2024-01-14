@@ -117,7 +117,8 @@ export class MatchService {
 
     if (httpOptions.headers === undefined) {
       httpOptions.headers = new HttpHeaders({
-        'x-apisports-key': '4545d2ea053ef4b802b23ece1f027700',
+       // 'x-apisports-key': '4545d2ea053ef4b802b23ece1f027700', première clé
+       'x-apisports-key': '19ff506253ed1af04c6325700946bc26',
         'Accept': 'application/json',
       });
     }

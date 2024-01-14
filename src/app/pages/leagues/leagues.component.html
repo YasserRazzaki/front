@@ -3,16 +3,16 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
   }
 </style>
-<div class="bg-gray-900 w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
+<div class=" w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
 <aside class="hidden py-4 md:w-1/3 lg:w-1/4 md:block">
     <div class="sticky flex flex-col gap-2 p-4 text-sm border-r border-indigo-100 top-16">
-        <h2 class="pl-3 mb-4 text-2xl text-white font-semibold">Leagues</h2>
+        <h2 class="pl-3 mb-4 text-2xl text-black font-semibold">Leagues</h2>
         <a routerLink="/leagues/english" (click)="showTab('english')"
             
             [class.text-orange-300]="activeTab === 'english'"
             [class.border]="activeTab === 'english'"
             [class.rounded-full]="activeTab === 'english'"
-            class="flex items-center px-3 py-2.5 font-semibold border text-white hover:border hover:rounded-full" >
+            class="flex items-center px-3 py-2.5 font-semibold border text-black hover:border hover:rounded-full" >
             English Premier League
         </a>
         <a routerLink="/leagues/french" (click)="showTab('french')"
@@ -20,7 +20,7 @@
             [class.text-orange-300]="activeTab === 'french'"
             [class.border]="activeTab === 'french'"
             [class.rounded-full]="activeTab === 'french'"
-            class="flex items-center px-3 py-2.5 font-semibold border text-white hover:border hover:rounded-full">
+            class="flex items-center px-3 py-2.5 font-semibold border text-black hover:border hover:rounded-full">
             French Ligue 1 UberEats
         </a>
         <a routerLink="/leagues/italian" (click)="showTab('italian')"
@@ -28,7 +28,7 @@
             [class.text-orange-300]="activeTab === 'italian'"
             [class.border]="activeTab === 'italian'"
             [class.rounded-full]="activeTab === 'italian'"
-            class="flex items-center px-3 py-2.5 font-semibold border text-white hover:border hover:rounded-full">
+            class="flex items-center px-3 py-2.5 font-semibold border text-black hover:border hover:rounded-full">
             Italian Seria A
         </a>
         <a routerLink="/leagues/german" (click)="showTab('german')"
@@ -36,7 +36,7 @@
             [class.text-orange-300]="activeTab === 'german'"
             [class.border]="activeTab === 'german'"
             [class.rounded-full]="activeTab === 'german'"
-            class="flex items-center px-3 py-2.5 font-semibold border text-white hover:border hover:rounded-full">
+            class="flex items-center px-3 py-2.5 font-semibold border text-black hover:border hover:rounded-full">
             German Bundesliga
         </a>
         <a routerLink="/leagues/spanish" (click)="showTab('spanish')"
@@ -44,7 +44,7 @@
             [class.text-orange-300]="activeTab === 'spanish'" 
             [class.border]="activeTab === 'spanish'"
             [class.rounded-full]="activeTab === 'spanish'"
-            class="flex items-center px-3 py-2.5 font-semibold border text-white hover:border hover:rounded-full">
+            class="flex items-center px-3 py-2.5 font-semibold border text-black hover:border hover:rounded-full">
             Spanish La Liga 
         </a>
         <a routerLink="/leagues/uel" (click)="showTab('uel')"
@@ -52,7 +52,7 @@
             [class.text-orange-300]="activeTab === 'uel'" 
             [class.border]="activeTab === 'uel'"
             [class.rounded-full]="activeTab === 'uel'"
-            class="flex items-center px-3 py-2.5 font-semibold border text-white hover:border hover:rounded-full">
+            class="flex items-center px-3 py-2.5 font-semibold border text-black hover:border hover:rounded-full">
             UEFA Europa League
         </a>
         <a routerLink="/leagues/ucl" (click)="showTab('ucl')"
@@ -60,7 +60,7 @@
             [class.text-orange-300]="activeTab === 'ucl'" 
             [class.border]="activeTab === 'ucl'"
             [class.rounded-full]="activeTab === 'ucl'"
-            class="flex items-center px-3 py-2.5 font-semibold border text-white hover:border hover:rounded-full">
+            class="flex items-center px-3 py-2.5 font-semibold border text-black hover:border hover:rounded-full">
             UEFA Champions League
         </a>
     </div>

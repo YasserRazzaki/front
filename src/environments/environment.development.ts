@@ -9,3 +9,4 @@ export const MIX_PUSHER_PORT = 6001;
 export const MIX_PUSHER_PORT_TLS = 6001;
 export const MIX_PUSHER_FORCE_TLS = false;
 export const MIX_PUSHER_TRANSPORT = ['ws'];
+export const BACKEND_URL = "http://localhost:8000";

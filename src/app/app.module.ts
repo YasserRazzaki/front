@@ -10,13 +10,9 @@ import { AuthService } from './shared/services/auth.service';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SettingsComponent } from './pages/settings/settings.component';
-import { GeneralSettingsComponent } from './pages/settings/general-settings/general-settings.component';
-import { PhotoSettingsComponent } from './pages/settings/photo-settings/photo-settings.component';
-import { FootballMatchesComponent } from './pages/football-matches/football-matches.component';
 import { LeaguesComponent } from './pages/leagues/leagues.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { QuizjoueurComponent } from './pages/quizjoueur/quizjoueur.component';
-import { LoginClassicComponent } from './pages/login-classic/login-classic.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { EnglishComponent } from './pages/leagues/english/english.component';
 import { SpanishComponent } from './pages/leagues/spanish/spanish.component';
@@ -34,13 +30,9 @@ import { EuropaLeagueComponent } from './pages/leagues/europa-league/europa-leag
     QuizComponent,
     ProfileComponent,
     SettingsComponent,
-    GeneralSettingsComponent,
-    PhotoSettingsComponent,
-    FootballMatchesComponent,
     LeaguesComponent,
     MenuComponent,
     QuizjoueurComponent,
-    LoginClassicComponent,
     RegisterComponent,
     EnglishComponent,
     SpanishComponent,

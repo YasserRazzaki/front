@@ -17,13 +17,9 @@ import { AccueilComponent } from './pages/accueil/accueil.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { AuthGuardService } from './shared/guards/auth-guard.service';
-import { GeneralSettingsComponent } from './pages/settings/general-settings/general-settings.component';
-import { PhotoSettingsComponent } from './pages/settings/photo-settings/photo-settings.component';
-import { FootballMatchesComponent } from './pages/football-matches/football-matches.component';
 import { LeaguesComponent } from './pages/leagues/leagues.component';
 import { QuizjoueurComponent } from './pages/quizjoueur/quizjoueur.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { LoginClassicComponent } from './pages/login-classic/login-classic.component';
 import { EnglishComponent } from './pages/leagues/english/english.component';
 import { SpanishComponent } from './pages/leagues/spanish/spanish.component';
 import { ItalianComponent } from './pages/leagues/italian/italian.component';
@@ -38,24 +34,11 @@ const routes: Routes = [
   { path: 'quiz-logo', component: QuizComponent, canActivate: [AuthGuardService] },
   { path: 'quiz-joueur', component: QuizjoueurComponent, canActivate: [AuthGuardService] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
-  { path: 'settings', component: SettingsComponent,
-    children: [
-      {
-        path: '', component: GeneralSettingsComponent,
-      },
-      {
-        path: 'photo', component: PhotoSettingsComponent
-      }
-    ]
-  },
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService]  },
   {
     path: 'accueil',
     component: AccueilComponent,
     canActivate: [AuthGuardService], 
-  },
-  {
-    path: 'calendar', 
-    component: FootballMatchesComponent, canActivate: [AuthGuardService]
   },
   {
     path: 'leagues', 
@@ -84,9 +67,6 @@ const routes: Routes = [
     ]
   }, {
     path: 'register', component: RegisterComponent
-  },
-  {
-    path: 'logcla', component: LoginClassicComponent
   }
 ];
 

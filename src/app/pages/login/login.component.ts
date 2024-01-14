@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
 }
-loginCre() {
+/*loginCre() {
   if (this.loginForm.valid) {
     const credentials = this.loginForm.value;
     this.authService.loginCla(credentials).subscribe(
@@ -53,5 +53,5 @@ loginCre() {
       }
     );
   }
-}
+}*/
 }

@@ -1,9 +1,3 @@
- <!--<div *ngFor="let logo of quizData">
-  <h2>{{ logo.id }}</h2>
-  <h2>{{ logo.nom }}</h2>
-  <h2>{{ logo.propositions }}</h2>
-  <img [src]="logo.image" alt="{{ logo.nom }} Image" style="height: 200px; width: 150px;">
-</div>-->
   <div class="max-w-md mx-auto my-8" *ngIf="!quizStarted && timeRemaining !== '00:00'">
     <p>
       Bienvenue dans le quiz des logos de football, êtes-vous prêt ? <br>
@@ -18,23 +12,15 @@
   </div>
   
     <div *ngIf="quizStarted && showQuiz" class="max-w-lg mx-auto my-8">
-      <!-- Affichage du compteur de temps -->
       <p>Temps restant : {{ timeRemaining }}</p>
-    
       <h2 class="text-2xl font-bold">Quelle est cette équipe ?</h2><br>
-
-      <!-- Affichage de l'image de la question -->
-      <img [src]="quizData[currentQuestionIndex].image" alt="Logo Image" style="height: 200px; width: 150px;"><br>
-    
-      <!-- Affichage de l'input stylisé avec Tailwind -->
-      <div *ngIf="showQuiz">
+      <img [src]="quizData[currentQuestionIndex].image" alt="Logo Image" style="height: 200px; width: 170px;"><br>
+       <div *ngIf="showQuiz">
         <div class="options">
           <button class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 mt-4 mr-4" *ngFor="let proposition of quizData[currentQuestionIndex].propositions" (click)="submitAnswer(proposition)">{{ proposition }}</button>
         </div>
       </div>
 </div>
-
-<!-- ... (autres éléments) -->
 <div class="max-w-md mx-auto my-8" *ngIf="isQuizFinished">
   <p>Votre score est : {{ score }} / {{ quizData.length }}</p>
   <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" (click)="restartQuiz()">
